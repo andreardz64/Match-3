@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     private GameObject firstPick = null;
     private GameObject secondPick = null;
+    
 
     private void Awake()
     {
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     private void FillBoard()
     {
-        for (int x = 0; x < 4; x++)
+        for (int x = 0; x < 5; x++)
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector3(x, -1, 0), Vector3.up, 10f);
             //Debug.Log("At column " + x + ", hits counter: " + hits.Length);
@@ -87,6 +88,25 @@ public class GameManager : MonoBehaviour
                 GenerateToken(x, y);
             }
         }
+        if (CheckMatch())
+        {
+            FillBoard();
+        }
+    }
+
+    private bool CheckMatch()
+    {
+        bool somethingDestroyed = false;
+        for (int i = 0; i < 4; i ++)
+        {
+            // vertical
+            RaycastHit2D hit = Physics2D.Raycast(new Vector3(i, 2, 0), Vector3.up);
+            somethingDestroyed = CheckMatch(new Vector3(i, 2, 0), hit.transform.gameObject.tag) ? true : somethingDestroyed;
+            // horizontal
+            hit = Physics2D.Raycast(new Vector3(2, i, 0), Vector3.right);
+            somethingDestroyed = CheckMatch(new Vector3(2, i, 0), hit.transform.gameObject.tag) ? true : somethingDestroyed;
+        }
+        return somethingDestroyed;
     }
 
     private bool CheckMatch(Vector3 position, string tag)

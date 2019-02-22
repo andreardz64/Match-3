@@ -11,18 +11,13 @@ public class Token : MonoBehaviour {
 		
 	}
 
-    private void Awake()
+    protected void Awake()
     {
         gameManager = GameObject.Find("GameManager");
         game = gameManager.GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
-    void OnMouseDown()
+    protected void OnMouseDown()
     {
         SelectToken();
     }

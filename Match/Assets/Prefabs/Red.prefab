@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4862148847629486}
   - component: {fileID: 212433247916401860}
   - component: {fileID: 61426704802672742}
-  - component: {fileID: 6318962549636002005}
+  - component: {fileID: 2915442783428583062}
   - component: {fileID: 50224343011146636}
   m_Layer: 0
   m_Name: Red
@@ -108,7 +108,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.81}
   m_EdgeRadius: 0
---- !u!114 &6318962549636002005
+--- !u!114 &2915442783428583062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1004578260484870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4f84c80a4b2847cd9488ef54a67c3c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 430a5b0b33a325d4599e3e57c0cf8dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &50224343011146636
