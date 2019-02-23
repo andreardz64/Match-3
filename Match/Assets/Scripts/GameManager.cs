@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     public int count;
-    public GameObject[] tokenPrefab = new GameObject[4];
+    public GameObject[] tokenPrefab;
     public static GameManager instance = null;
     private GameObject firstPick = null;
     private GameObject secondPick = null;
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("Generate " + x + ", " + y);
                 GenerateToken(x, y);
             }
-            Invoke("CheckMatch", 0.25f);
+            Invoke("CheckMatch", 0.1f);
         }
     }
 
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
                 somethingDestroyed = CheckMatch(hit.transform.position, hit.transform.gameObject.tag) ? true : somethingDestroyed;
             if (somethingDestroyed)
             {
-                Invoke("FillBoard", 0.25f);
+                Invoke("FillBoard", 0.1f);
             }
         }
     }
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Debug.Log("toBottom");
-        hits = Physics2D.RaycastAll(position + new Vector3(0, -1, 0), Vector3.down, 1f);
+        hits = Physics2D.RaycastAll(position + new Vector3(0, -1, 0), Vector3.down, 2f);
         for (int i = 0; i < hits.Length && hits[i].transform.gameObject.tag == tag; i++)
         {
             //Debug.Log(hits[i].transform.gameObject.tag);
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
             foreach (GameObject token in toDestroyHorizontal)
             {
 
-                Destroy(token);
+               
                 somethingDestroyed = true;
                 count++;
                 hits = Physics2D.RaycastAll(token.transform.position, Vector3.up, 10f);
@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
                         hits[i].transform.position += new Vector3(0, -1, 0);
                     
                 }
+                Destroy(token);
             }
 
         }
@@ -174,6 +175,7 @@ public class GameManager : MonoBehaviour
             bool firstBall = false;
             foreach (GameObject token in toDestroyVertical)
             {
+
                 Destroy(token);
                 somethingDestroyed = true;
                 count++;
@@ -183,11 +185,12 @@ public class GameManager : MonoBehaviour
                     for (int i = 0; i < hits.Length; i++)
                     {
                         //Debug.Log(hits[i].transform.gameObject.tag);
-                            hits[i].transform.position += new Vector3(0, toDestroyVertical.Count, 0);
+                            hits[i].transform.position += new Vector3(0, -toDestroyVertical.Count, 0);
                        
                         firstBall = true;
                     }
                 }
+               
 
             }
         }

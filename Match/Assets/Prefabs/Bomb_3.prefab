@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4261333867934646439}
   - component: {fileID: 1010921121244752457}
   - component: {fileID: 8565059213245912765}
+  - component: {fileID: 2913485487941102266}
   m_Layer: 0
   m_Name: Bomb_3
-  m_TagString: Untagged
+  m_TagString: g
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: c3c68c697d4644f978b72c6240e80767, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 0d30711c2e05f894dba480bc6b64f95c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,3 +129,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2913485487941102266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514661129122184926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254257898746b0144b914f9a0576acd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

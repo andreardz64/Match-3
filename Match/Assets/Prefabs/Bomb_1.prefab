@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1466420467118947009}
   - component: {fileID: 6003237456727273597}
   - component: {fileID: 6062664114492434963}
+  - component: {fileID: 5824092323186198552}
   m_Layer: 0
   m_Name: Bomb_1
-  m_TagString: Untagged
+  m_TagString: r
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c3c68c697d4644f978b72c6240e80767, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 0d30711c2e05f894dba480bc6b64f95c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,3 +129,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.81}
   m_EdgeRadius: 0
+--- !u!114 &5824092323186198552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784155977071469850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254257898746b0144b914f9a0576acd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

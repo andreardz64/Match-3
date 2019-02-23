@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Token : MonoBehaviour {
-
+public class Bomb : MonoBehaviour
+{
     public static GameObject gameManager;
     public static GameManager game;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
-
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     protected void Awake()
     {
         gameManager = GameObject.Find("GameManager");

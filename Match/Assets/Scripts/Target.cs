@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Token : MonoBehaviour {
-
+public class Target : MonoBehaviour
+{
     public static GameObject gameManager;
     public static GameManager game;
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
     protected void Awake()
     {
         gameManager = GameObject.Find("GameManager");
@@ -30,5 +29,11 @@ public class Token : MonoBehaviour {
             gameObject.GetComponent<Renderer>().material.color = Color.gray;
         }
         game.PickToken(gameObject);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

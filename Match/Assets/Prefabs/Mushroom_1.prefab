@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6200232029223453738}
   - component: {fileID: 4553513166868351922}
   - component: {fileID: 2861562617508278514}
+  - component: {fileID: 3198917057409740837}
   m_Layer: 0
   m_Name: Mushroom_1
-  m_TagString: Untagged
+  m_TagString: y
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c06f7a5e7f30e43bc990bd41b033228b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99d0f64c7ffdbfe47ab6ade0d3017091, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,3 +129,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3198917057409740837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951902138554661575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2669fd3810b4ab469d26952a1e0d165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
