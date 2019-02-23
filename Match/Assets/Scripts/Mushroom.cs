@@ -8,12 +8,10 @@ public class Mushroom : MonoBehaviour
     public static GameObject gameManager;
     public static GameManager game;
     RaycastHit2D[] hits;
-
+    List<GameObject> toDestroyHorizontal;
+    List<GameObject> toDestroyVertical;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
     protected void Awake()
     {
         gameManager = GameObject.Find("GameManager");
@@ -37,38 +35,13 @@ public class Mushroom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        List<GameObject> toDestroyHorizontal = new List<GameObject>();
-        List<GameObject> toDestroyVertical = new List<GameObject>();
-        hits = Physics2D.RaycastAll(this.transform.position, Vector3.left, 4f); //This counts the original token
-        for (int i = 0; i < hits.Length && hits[i].transform.gameObject.tag == tag; i++)
-        {
-            //Debug.Log(hits[i].transform.gameObject.tag);
-            toDestroyHorizontal.Add(hits[i].transform.gameObject);
-        }
-        //Debug.Log("toRight");
-        hits = Physics2D.RaycastAll(this.transform.position + new Vector3(1, 0, 0), Vector3.right, 4f);
-        for (int i = 0; i < hits.Length && hits[i].transform.gameObject.tag == tag; i++)
-        {
-            //Debug.Log(hits[i].transform.gameObject.tag);
-            toDestroyHorizontal.Add(hits[i].transform.gameObject);
-        }
-
-        //Debug.Log("toTop");
-        hits = Physics2D.RaycastAll(this.transform.position, Vector3.up, 4f);
-        for (int i = 0; i < hits.Length && hits[i].transform.gameObject.tag == tag; i++)
-        {
-            //Debug.Log(hits[i].transform.gameObject.tag);
-            toDestroyVertical.Add(hits[i].transform.gameObject);
-        }
-
-        //Debug.Log("toBottom");
-        hits = Physics2D.RaycastAll(this.transform.position + new Vector3(0, -1, 0), Vector3.down, 4f);
-        for (int i = 0; i < hits.Length && hits[i].transform.gameObject.tag == tag; i++)
-        {
-            //Debug.Log(hits[i].transform.gameObject.tag);
-            toDestroyVertical.Add(hits[i].transform.gameObject);
-        }
-
         
+        
+    }
+
+    private void OnDestroy()
+    {
+
+        game.DstroyMush = true;
     }
 }

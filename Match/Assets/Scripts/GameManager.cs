@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     private GameObject firstPick = null;
     private GameObject secondPick = null;
-    
-
+    public bool DstroyMush = false;
+    public GameObject firstPosObj;
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +22,19 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (DstroyMush)
+        {
+            DstroyMush = false;
+            firstPosObj.SetActive(true);
+            StartCoroutine(Wait());
+            
+            
+            
         }
     }
 
@@ -76,7 +89,7 @@ public class GameManager : MonoBehaviour
         Instantiate(tokenPrefab[Random.Range(0, tokenPrefab.Length)], new Vector3(x, y, 0), Quaternion.identity);
     }
 
-    private void FillBoard()
+    public void FillBoard()
     {
         for (int x = 0; x < 5; x++)
         {
@@ -89,6 +102,23 @@ public class GameManager : MonoBehaviour
             }
             Invoke("CheckMatch", 0.1f);
         }
+    }
+
+    public void FillAll()
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                //Debug.Log("Generate " + x + ", " + y);
+                GenerateToken(x, y);
+                
+                
+            }
+
+            
+        }
+        
     }
 
     private void CheckMatch()
@@ -206,4 +236,13 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+    private IEnumerator Wait()
+    {
+        
+         yield return new WaitForSeconds(0.5f);
+         firstPosObj.SetActive(false);
+         FillAll();
+        
+    }
 }
