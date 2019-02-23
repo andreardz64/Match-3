@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     public int count;
-    public GameObject[] tokenPrefab = new GameObject[3];
+    public GameObject[] tokenPrefab = new GameObject[4];
     public static GameManager instance = null;
     private GameObject firstPick = null;
     private GameObject secondPick = null;
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("That move does not destroy anything.");
                 }
 
-                FillBoard();
+                Invoke("FillBoard", 0.25f);
                 firstPick = null;
                 secondPick = null;
             }
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private void GenerateToken(int x, int y)
     {
-        Instantiate(tokenPrefab[Random.Range(0, 3)], new Vector3(x, y, 0), Quaternion.identity);
+        Instantiate(tokenPrefab[Random.Range(0, tokenPrefab.Length)], new Vector3(x, y, 0), Quaternion.identity);
     }
 
     private void FillBoard()
@@ -82,31 +82,33 @@ public class GameManager : MonoBehaviour
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector3(x, -1, 0), Vector3.up, 10f);
             //Debug.Log("At column " + x + ", hits counter: " + hits.Length);
-            for (int y = hits.Length; y < 4; y++)
+            for (int y = hits.Length; y < 5; y++)
             {
                 //Debug.Log("Generate " + x + ", " + y);
                 GenerateToken(x, y);
             }
-        }
-        if (CheckMatch())
-        {
-            FillBoard();
+            Invoke("CheckMatch", 0.25f);
         }
     }
 
-    private bool CheckMatch()
+    private void CheckMatch()
     {
         bool somethingDestroyed = false;
-        for (int i = 0; i < 4; i ++)
+        for (int i = 0; i < 5; i ++)
         {
             // vertical
             RaycastHit2D hit = Physics2D.Raycast(new Vector3(i, 2, 0), Vector3.up);
-            somethingDestroyed = CheckMatch(new Vector3(i, 2, 0), hit.transform.gameObject.tag) ? true : somethingDestroyed;
+            if (hit.transform != null)
+                somethingDestroyed = CheckMatch(hit.transform.position, hit.transform.gameObject.tag) ? true : somethingDestroyed;
             // horizontal
             hit = Physics2D.Raycast(new Vector3(2, i, 0), Vector3.right);
-            somethingDestroyed = CheckMatch(new Vector3(2, i, 0), hit.transform.gameObject.tag) ? true : somethingDestroyed;
+            if (hit.transform != null)
+                somethingDestroyed = CheckMatch(hit.transform.position, hit.transform.gameObject.tag) ? true : somethingDestroyed;
+            if (somethingDestroyed)
+            {
+                Invoke("FillBoard", 0.25f);
+            }
         }
-        return somethingDestroyed;
     }
 
     private bool CheckMatch(Vector3 position, string tag)
@@ -159,7 +161,9 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < hits.Length; i++)
                 {
                     //Debug.Log(hits[i].transform.gameObject.tag);
-                    hits[i].transform.position += new Vector3(0, -1, 0);
+
+                        hits[i].transform.position += new Vector3(0, -1, 0);
+                    
                 }
             }
 
@@ -179,7 +183,8 @@ public class GameManager : MonoBehaviour
                     for (int i = 0; i < hits.Length; i++)
                     {
                         //Debug.Log(hits[i].transform.gameObject.tag);
-                        hits[i].transform.position += new Vector3(0, -3, 0);
+                            hits[i].transform.position += new Vector3(0, toDestroyVertical.Count, 0);
+                       
                         firstBall = true;
                     }
                 }
